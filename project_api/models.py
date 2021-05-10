@@ -27,3 +27,8 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+class Snapshot(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='snapshots')
+    snapshot = models.ImageField(null=True, blank=True, upload_to='images/')
+    created_at = models.DateTimeField(auto_now_add=True)
