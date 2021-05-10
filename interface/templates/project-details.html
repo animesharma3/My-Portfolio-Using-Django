@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="hero" class="hero route bg-image">
+  <div class="overlay-itro"></div>
+  <div class="hero-content display-table">
+    <div class="table-cell">
+      <div class="container">
+        
+      </div>
+    </div>
+  </div>
+</div><!-- End Hero Section -->
+     
+{% endblock %}
+
+{% block scripts %}
+    <script>
+      async function displaySnapshots() {
+        let url = '{% url "project-detail" project.id %}'
+        let response = await fetch(url)
+        let data = await response.json()
+        let output = ``
+        data.snapshots.forEach(async (snapshot_id) => {
+          let url = `http://localhost:8000/api/snapshot-detail/${snapshot_id}`
+          let response = await fetch(url)
+          let data = await response.json()
+          output += `<div class="swiper-slide">
+            <img src='${data.snapshot}' alt="">
+          </div>`
+          //document.getElementById('slider').innerHTML = output
+        })
+      }
+      displaySnapshots()
+    </script>
+{% endblock %}
