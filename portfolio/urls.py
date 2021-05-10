@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('project_api.urls')),
     path('', include('interface.urls')),
-    path('api/myself/', include('myself.urls'))
+    path('api/myself/', include('myself.urls')),
+    path('djrichtextfield/', include('djrichtextfield.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
