@@ -78,7 +78,9 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'reactPortfolio/out')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,6 +153,7 @@ STATIC_URL = '/static/'
 
 STATICFILESDIRS = [
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'reactPortfolio/out/images')
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
